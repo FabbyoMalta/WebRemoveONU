@@ -140,12 +140,11 @@ def delete_onu():
         success = delete_onu_command(tn, onu)
         tn.close()
         if success:
-            flash('SUCESSO! ONU excluída.')
+            flash('SUCESSO! ONU excluída.', 'success')  # Mensagem de sucesso
         else:
-            flash('Exclusão não funcionou. Procure um analista.')
+            flash('Exclusão não funcionou. Procure um analista.', 'danger')  # Mensagem de erro
     else:
-        flash('Conexão não foi estabelecida. Verifique as credenciais e o host.')
-
+        flash('Conexão não foi estabelecida. Verifique as credenciais e o host.', 'danger')
     return redirect(url_for('index'))
 
 def delete_onu_command(tn, onu):

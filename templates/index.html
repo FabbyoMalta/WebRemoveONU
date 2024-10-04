@@ -4,8 +4,8 @@
 <h1>Consultar/Excluir ONU</h1>
 <form method="post" action="{{ url_for('index') }}">
     <div class="form-group">
-        <label for="sn">Digite o número de série (SN) que deseja consultar (pelo menos 4 dígitos):</label>
-        <input type="text" class="form-control" id="sn" name="sn" required minlength="4">
+        <label for="sn" class="text-white">Digite o número de série (SN) que deseja consultar (pelo menos 4 dígitos):</label>
+        <input type="text" class="form-control bg-secondary text-white" id="sn" name="sn" required minlength="4">
     </div>
     <button type="submit" class="btn btn-primary">Consultar</button>
 </form>
