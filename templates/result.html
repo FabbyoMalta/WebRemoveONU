@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block title %}Informações da ONU{% endblock %}
+{% block content %}
+<h1>Informações da ONU</h1>
+{% if onu %}
+    <table class="table table-bordered">
+        <tr>
+            <th>PORTA PON</th>
+            <td>{{ onu.pon }}</td>
+        </tr>
+        <tr>
+            <th>FRAME/SLOT</th>
+            <td>{{ onu.frame_slot }}</td>
+        </tr>
+        <tr>
+            <th>F/S/P</th>
+            <td>{{ onu.fsp_value }}</td>
+        </tr>
+        <tr>
+            <th>ONT-ID</th>
+            <td>{{ onu.ont_id }}</td>
+        </tr>
+        <tr>
+            <th>STATUS DA ONU</th>
+            <td>{{ onu.status }}</td>
+        </tr>
+        <tr>
+            <th>LOGIN</th>
+            <td>{{ onu.description }}</td>
+        </tr>
+    </table>
+    <form method="post" action="{{ url_for('delete_onu') }}">
+        <input type="hidden" name="fsp_value" value="{{ onu.fsp_value }}">
+        <input type="hidden" name="ont_id" value="{{ onu.ont_id }}">
+        <input type="hidden" name="frame_slot" value="{{ onu.frame_slot }}">
+        <input type="hidden" name="pon" value="{{ onu.pon }}">
+        <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir esta ONU?');">Excluir ONU</button>
+        <a href="{{ url_for('index') }}" class="btn btn-secondary">Voltar</a>
+    </form>
+{% else %}
+    <p class="text-danger">A ONU não está cadastrada na OLT.</p>
+    <a href="{{ url_for('index') }}" class="btn btn-secondary">Voltar</a>
+{% endif %}
+{% endblock %}
