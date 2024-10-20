@@ -4,7 +4,7 @@ import time
 import os
 
 app = Flask(__name__)
-app.secret_key = 'sua_chave_secreta_aqui'  # Substitua por uma chave secreta real
+app.secret_key = os.getenv('APP_SECRET_KEY')  # Substitua por uma chave secreta real
 
 # Configurações da OLT (use variáveis de ambiente)
 OLT_HOST = os.environ.get('OLT_HOST') or "10.1.10.14"
